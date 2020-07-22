@@ -15,14 +15,10 @@ const apiUrl = `https://api.unsplash.com/photos/random/?client_id=${apiKey}&coun
 
 // check if all images are loaded
 imageLoaded = () => {
-    // console.log("image loaded")
     imagesLoaded++
-    console.log(imagesLoaded)
     if (imagesLoaded === totalImages) {
         ready = true
         loader.hidden = true
-        console.log("ready = ", ready)
-        
     }
 }
 
@@ -40,7 +36,6 @@ setAttributes = (element, attributes) => {
 displayPhotos = () => {
     imagesLoaded = 0
     totalImages = photosArray.length
-    console.log("total images ", totalImages)
     photosArray.forEach((photo) => {
         // create <a></a>  to link to unsplash
         const item = document.createElement("a")
