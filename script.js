@@ -6,9 +6,10 @@ let photosArray = []
 
 
 // unsplash api
-const count = 10
+const count = 30
 const apiKey = "SCLtf3C-D4Vu-_r1F0D_gSCUWYEL8-fjv2kcbX04XMo"
 const apiUrl = `https://api.unsplash.com/photos/random/?client_id=${apiKey}&count=${count}`
+
 
 
 // helper function to set attributes on dom elements
@@ -42,6 +43,9 @@ displayPhotos = () => {
             title: photo.alt_description
         })
 
+        // event listener check when each is finished loading
+        img.addEventListener("load", imageLoaded)
+
         // put <img> inside <a></a>.. then put inside imageContainer
         item.appendChild(img)
         imageContainer.appendChild(item)
@@ -61,6 +65,14 @@ getPhotos = async () => {
     }
 }
 
+
+// check to see if scrolling near bottom of page, load more photos
+window.addEventListener("scroll", (e) => {
+    if (window.innerHeight + window.scrollY >= document.body.offsetHeight - 1000) {
+        getPhotos()
+        console.log("get more")
+    }
+})
 
 // on load
 getPhotos()
