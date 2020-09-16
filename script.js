@@ -86,7 +86,7 @@ getPhotos = async () => {
             isInitialLoad = false
         }
     } catch (error) {
-        console.log(error)
+        console.log(err)
     }
 }
 
